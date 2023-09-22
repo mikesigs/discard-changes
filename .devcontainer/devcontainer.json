@@ -29,7 +29,8 @@
 				"davidanson.vscode-markdownlint",
 				"ms-azuretools.vscode-docker",
 				"GitHub.copilot",
-				"GitHub.copilot-chat"
+				"GitHub.copilot-chat",
+				"kaellarkin.hugo-shortcode-syntax"
 			]
 		}
 	},
