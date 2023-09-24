@@ -190,6 +190,7 @@ To complete our Terraform Version Switcher we need to have a way to uninstall a 
 
 ```powershell
 function Remove-ActiveTerraformVersion {
+    Remove-Item -Path $TFVCurrentVersionFile -Force
     Remove-Alias -Name terraform -Scope Global -ErrorAction SilentlyContinue
 }
 
