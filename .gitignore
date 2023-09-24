@@ -21,4 +21,10 @@
 go.work
 
 # Local Netlify folder
-.netlify
+.netlify/
+
+.idea
+*.lock
+public/
+themes/
+
