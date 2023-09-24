@@ -26,6 +26,8 @@ RUN apt-get update && apt-get install -y ca-certificates openssl git curl && \
     tar xf ${VERSION}.tar.gz && \
     mv hugo /usr/bin/hugo
 
+# RUN npm install netlify-cli -g
+
 # Hugo dev server port
 EXPOSE 1313
 

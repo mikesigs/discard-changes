@@ -71,7 +71,7 @@ The first function we'll need is one that can list the available versions of Ter
 ```powershell
 function Show-TerraformVersions {
     $Response = Invoke-WebRequest -Uri "https://releases.hashicorp.com/terraform"
-    $TerraformVersions = [Regex]::Matches($Response.Content, '<a href=".+">terraform_(.+)</a>') | Select-Object { $_.Groups[1].Value }
+    $TerraformVersions = [Regex]::Matches($Response.Content, '<a href=".+">terraform_(.+)</a>') | ForEach-Object { $_.Groups[1].Value }
     $TerraformVersions
 }
 ```
