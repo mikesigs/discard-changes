@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://example.org/categories/</loc>
-  </url><url>
-    <loc>https://example.org/</loc>
-  </url><url>
-    <loc>https://example.org/tags/</loc>
-  </url>
-</urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://discardchanges.com/about/</loc><lastmod>2023-09-21T06:06:03+00:00</lastmod></url><url><loc>https://discardchanges.com/categories/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/categories/cli/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/posts/terraform-version-manager/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/categories/devex/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/tags/hashicorp/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/posts/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/tags/powershell/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/categories/powershell/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/tags/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/tags/terraform/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/categories/terraform/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/tags/tfv/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/tags/windows/</loc><lastmod>2021-03-21T00:00:00+00:00</lastmod></url><url><loc>https://discardchanges.com/authors/</loc></url><url><loc>https://discardchanges.com/series/</loc></url></urlset>

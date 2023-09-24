@@ -18,9 +18,10 @@ keywords = "blog,developer,personal,dotnet,kubernetes,terraform,powershell,octop
 info = [".NET Developer", "Architect"]
 gravatar = "mikesigsworth@gmail.com"
 dateFormat = "January 2, 2006"
+logo = "/img/favicon-black-32x32.png"
 faviconSVG = "/img/favicon.svg"
-favicon_32 = "/img/favicon-32x32.png"
-favicon_16 = "/img/favicon-16x16.png"
+favicon_16 = "/img/favicon-black-16x16.png"
+favicon_32 = "/img/favicon-black-32x32.png"
 
 # Git Commit in Footer, uncomment the line below to enable it
 commit = "https://github.com/mikesigs/discard-changes/tree/"

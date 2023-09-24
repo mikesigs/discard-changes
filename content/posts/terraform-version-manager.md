@@ -1,14 +1,21 @@
 +++
-draft = true
-date = 2023-09-21T06:29:24Z
+draft = false
+date = 2021-03-21
 title = "Creating a Terraform Version Manager with PowerShell"
-description = ""
-slug = ""
-authors = []
-tags = []
-categories = []
-externalLink = ""
-series = []
+description = "Build a Terraform version manager in PowerShell to easily switch between different versions of Terraform on Windows."
+tags = [
+    "terraform",
+    "powershell",
+    "windows",
+    "hashicorp",
+    "tfv"
+]
+categories = [
+    "terraform",
+    "powershell",
+    "cli",
+    "devex"
+]
 +++
 
 If you're a developer who works with Terraform, you know how important it is to have the right version of Terraform installed for your project. But what if you need to work on multiple projects, each with a different version of Terraform? That's where a Terraform version manager comes in.
@@ -57,7 +64,7 @@ if (!(Test-Path -Path $TfvInstallDirectory)) {
 }
 ```
 
-## Listing the Versions Available to Install
+## Listing the Available Versions from Hashicorp
 
 The first function we'll need is one that can list the available versions of Terraform on the HashiCorp website. This function will make an HTTP request to their [Releases](https://releases.hashicorp.com/terraform) page, then parse the HTML to get a list of version numbers.
 
@@ -121,7 +128,7 @@ function Set-ActiveTerraformVersion {
 You _could_ stop here. This is all you really need to install and switch between different versions of Terraform. But we can do better. Let's add a few more functions to make this tool even more useful.
 {{< /notice >}}
 
-## Displaying the Active Terraform Version
+## Displaying the Active Version
 
 In order to display the active version of Terraform we just need to read the value from the `~/.tfv/current` file. If the file doesn't exist, that means no version has been set, so we'll return `$null` and display a helpful warning message.
 
@@ -177,7 +184,7 @@ function Show-TerraformVersions {
 }
 ```
 
-## Uninstalling Terraform Versions
+## Uninstalling a Version
 
 To complete our Terraform Version Switcher we need to have a way to uninstall a version we're no longer using. We'll also make sure to unset the active version if we're uninstalling it. We'll split this functionality into two functions: `Remove-ActiveTerraformVersion` and `Uninstall-Terraform`.
 
@@ -204,7 +211,7 @@ function Uninstall-Terraform {
 }
 ```
 
-## Putting it all together
+## Creating a Single Entry Point
 
 At this point we have everything we need to `install`, `uninstall`, `list`, `set`, and `unset` different versions of Terraform. But who's going to remember all those functions? Not to mention the verbosity of typical PowerShell function names! What we need is a single command to handle it all.
 
@@ -259,7 +266,7 @@ function Invoke-TerraformVersionManager {
 Set-Alias tfv Invoke-TerraformVersionManager
 ```
 
-## Show Help Documentation
+## Showing Help Documentation
 
 Oops! If you were looking closely, you may have noticed that we're missing a function called `Show-Help`. Let's add that now so we can see a helpful message when we run `tfv help`.
 

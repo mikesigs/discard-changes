@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on Discard Changes</title>
-    <link>https://example.org/tags/</link>
-    <description>Recent content in Tags on Discard Changes</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Discard Changes</title><link>https://discardchanges.com/tags/</link><description>Recent content in Tags on Discard Changes</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://discardchanges.com/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>hashicorp</title><link>https://discardchanges.com/tags/hashicorp/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/tags/hashicorp/</guid><description/></item><item><title>powershell</title><link>https://discardchanges.com/tags/powershell/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/tags/powershell/</guid><description/></item><item><title>terraform</title><link>https://discardchanges.com/tags/terraform/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/tags/terraform/</guid><description/></item><item><title>tfv</title><link>https://discardchanges.com/tags/tfv/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/tags/tfv/</guid><description/></item><item><title>windows</title><link>https://discardchanges.com/tags/windows/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/tags/windows/</guid><description/></item></channel></rss>

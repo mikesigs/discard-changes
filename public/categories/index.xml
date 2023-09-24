@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Categories on Discard Changes</title>
-    <link>https://example.org/categories/</link>
-    <description>Recent content in Categories on Discard Changes</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://example.org/categories/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on Discard Changes</title><link>https://discardchanges.com/categories/</link><description>Recent content in Categories on Discard Changes</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://discardchanges.com/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>cli</title><link>https://discardchanges.com/categories/cli/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/categories/cli/</guid><description/></item><item><title>devex</title><link>https://discardchanges.com/categories/devex/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/categories/devex/</guid><description/></item><item><title>powershell</title><link>https://discardchanges.com/categories/powershell/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/categories/powershell/</guid><description/></item><item><title>terraform</title><link>https://discardchanges.com/categories/terraform/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/categories/terraform/</guid><description/></item></channel></rss>
