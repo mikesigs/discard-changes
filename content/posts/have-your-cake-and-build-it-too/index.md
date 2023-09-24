@@ -129,9 +129,9 @@ Notice in Visual Studio Code the `run task|debug task` links above each of our t
 
 Go ahead and click `run task` and watch the build output in the VS Code terminal.
 
-{{< notice note >}}
+{{% alert note %}}
 Remember, if you run into any issues please leave a comment and I will try to help as best I can.
-{{< /notice >}}
+{{% /alert %}}
 
 ## Create a UnitTests Task
 
