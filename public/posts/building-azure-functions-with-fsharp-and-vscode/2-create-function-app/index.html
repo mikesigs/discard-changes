@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Building Azure Functions With F# Script and Visual Studio Code - Step 2 - Create the Function App · Discard Changes
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Mike Sigsworth">
+<meta name="description" content="This is Step 2 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App ◀️ Run the Function Locally Deploy the Function App to Azure Create the Function App Link to heading Alright, you&rsquo;ve got all the tools you need to do some kickass F# development.">
+<meta name="keywords" content="blog,developer,personal,dotnet,kubernetes,terraform,powershell,octopus,github,actions,c#">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Building Azure Functions With F# Script and Visual Studio Code - Step 2 - Create the Function App"/>
+<meta name="twitter:description" content="This is Step 2 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App ◀️ Run the Function Locally Deploy the Function App to Azure Create the Function App Link to heading Alright, you&rsquo;ve got all the tools you need to do some kickass F# development."/>
+
+<meta property="og:title" content="Building Azure Functions With F# Script and Visual Studio Code - Step 2 - Create the Function App" />
+<meta property="og:description" content="This is Step 2 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App ◀️ Run the Function Locally Deploy the Function App to Azure Create the Function App Link to heading Alright, you&rsquo;ve got all the tools you need to do some kickass F# development." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/2-create-function-app/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-04-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-04-12T00:00:00+00:00" />
+
+
+
+
+<link rel="canonical" href="https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/2-create-function-app/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.135e22c97ff685fe983fc60048e309ced8f00d8d38f536aa67dba8a13a03dfa4.css" integrity="sha256-E14iyX/2hf6YP8YASOMJztjwDY049TaqZ9uooToD36Q=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/img/favicon-black-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/favicon-black-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Discard Changes
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/2-create-function-app/">
+              Building Azure Functions With F# Script and Visual Studio Code - Step 2 - Create the Function App
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2018-04-12T00:00:00Z">
+                April 12, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              7-minute read
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/azure/">Azure</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/fsharp/">FSharp</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/azure-functions/">Azure Functions</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/visual-studio-code/">Visual Studio Code</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>This is Step 2 in a <a href="../" >series of posts</a> where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools.
+I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.</p>
+<ol>
+<li><a href="../1-setup/" >Setup Your Environment</a></li>
+<li><strong><a href="../2-create-function-app/" >Create the Function App</a></strong> ◀️</li>
+<li><a href="../3-running-locally/" >Run the Function Locally</a></li>
+<li><a href="../4-deploy-to-azure/" >Deploy the Function App to Azure</a></li>
+</ol>
+<h2 id="create-the-function-app">
+  Create the Function App
+  <a class="heading-link" href="#create-the-function-app">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Alright, you&rsquo;ve got all the tools you need to do some kickass F# development. Let&rsquo;s start coding!</p>
+<p>As I mentioned earlier, the <strong>Azure Functions</strong> extension doesn&rsquo;t support creating F# Function Apps in Visual Studio Code. So we&rsquo;ll create the project using the CLI and the Azure Functions Core Tools.</p>
+<p>Open up your favorite console, and create a new directory for your project. I&rsquo;m gonna call mine something really <del>lame</del> <em>fun</em> like <code>HelloYou</code>, then I&rsquo;ll <code>cd</code> into it and run <code>func init</code>. You can also do this in one shot by specifying the directory name: <code>func init HelloYou</code>.</p>
+<p>You should now have a directory initialized as a git repository with two files: <code>host.json</code> and <code>local.settings.json</code>. There&rsquo;s also a <code>.gitignore</code> tailored for Azure Functions development.</p>
+<h2 id="open-the-project">
+  Open the Project
+  <a class="heading-link" href="#open-the-project">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>There&rsquo;s not much there yet. Just an empty Azure Functions project. Let&rsquo;s open up Visual Studio Code now and let the Azure Functions extension do it&rsquo;s thing.</p>
+<div class="notice info">
+  <div class="notice-title">
+    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>Info
+  </div>
+  <div class="notice-content">To open the current directory in VS Code from the console type <code>code .</code></div>
+</div>
+
+<h3 id="azure-functions-extension-prompt">
+  Azure Functions Extension Prompt
+  <a class="heading-link" href="#azure-functions-extension-prompt">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>You should now be greeted by the following prompt from the Azure Functions extension:</p>
+<p><img src="../img/detected-azure-functions-project-prompt.png" alt="Detected Azure Functions Project Prompt"></p>
+<p>Click <strong>Yes</strong> and <a href="https://github.com/Microsoft/vscode-azurefunctions/blob/master/docs/project.md"  class="external-link" target="_blank" rel="noopener">all of this will be yours</a>!
+Granted, it&rsquo;s not <em>as</em> beneficial for an F# project, but I still think it&rsquo;s worth it for the <code>Tasks.json</code> alone.</p>
+<p>After clicking <strong>Yes</strong>, VS Code will prompt you to select the default language for your project. Please select <code>F#Script</code>.</p>
+<h2 id="create-a-new-function">
+  Create a New Function
+  <a class="heading-link" href="#create-a-new-function">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>There&rsquo;s a few ways you can create a new function in your app. You could use the <code>func new</code> command on the CLI, or you could use the Azure Functions extension in VS Code. They both run through similar steps, prompting you for the details of your function. For this post, we&rsquo;re going to continue using the Azure Functions extension.</p>
+<p>Look in the File Explorer sidebar of VS Code. You should see a panel called Azure Functions. Hover your mouse over it and a few buttons will appear. Click on the <code>Create Function</code> button.</p>
+<p><img src="../img/vscode-create-function-button.png" alt="VS Code Create Function Button"></p>
+<p>VS Code will now prompt you for the details of your function.</p>
+<ol>
+<li><strong>The folder containing your function app:</strong> Hit [Enter] to pick the current folder</li>
+<li><strong>Select a function template:</strong> Choose &ldquo;Generic Webhook&rdquo;</li>
+<li><strong>Provide a function name:</strong> &ldquo;HelloYou&rdquo;</li>
+</ol>
+<p>You will now find a new subfolder in your project named <code>HelloYou</code> with the following files:</p>
+<ul>
+<li><strong>function.json:</strong> Binding information about the function</li>
+<li><strong>run.fsx:</strong> The function code itself</li>
+<li><strong>sample.dat:</strong> A completely useless sample data file. You can delete it.</li>
+</ul>
+<h2 id="finally-some-code">
+  Finally, Some Code
+  <a class="heading-link" href="#finally-some-code">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Okay, if you&rsquo;re like me, all this setup probably drove you crazy. And you&rsquo;re glad to finally get a chance to see some code. So without further ado, let&rsquo;s crack open <code>run.fsx</code>.</p>
+<h3 id="holy-squigglies">
+  Holy Squigglies!
+  <a class="heading-link" href="#holy-squigglies">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>The first thing you&rsquo;ll notice is VS Code throwing a lot of squigglies under everything. <strong>So many undefined types!</strong> Well, not really. You see, at runtime, the Azure Functions hosting environment automatically loads <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-fsharp#referencing-external-assemblies"  class="external-link" target="_blank" rel="noopener">a bunch of namespaces and assemblies</a> for you. Unfortunately, VS Code doesn&rsquo;t know anything about this. So to make VS Code happy you can add the following code to the beginning of <code>run.fsx</code>.</p>
+<p>Replace these lines:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fsharp" data-lang="fsharp"><span class="line"><span class="cl"><span class="cp">#r</span> <span class="s">&#34;System.Net.Http&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#r</span> <span class="s">&#34;Newtonsoft.Json&#34;</span>
+</span></span></code></pre></div><p>With this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fsharp" data-lang="fsharp"><span class="line"><span class="cl"><span class="cp">#if</span> <span class="o">!</span><span class="n">COMPILED</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// You&#39;ll need to uncomment one of the following lines based on
+</span></span></span><span class="line"><span class="cl"><span class="c1">// how you installed the Core Tools (i.e. with npm or Chocolatey)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// #I @&#34;C:/Program Files/nodejs/node_modules/azure-functions-core-tools/bin/&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// #I @&#34;C:/ProgramData/chocolatey/lib/azure-functions-core-tools/tools/&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#r</span> <span class="s">&#34;Microsoft.Azure.Webjobs.Host.dll&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">open</span> <span class="nn">Microsoft.Azure.WebJobs.Host</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#r</span> <span class="s">&#34;System.Net.Http.Formatting.dll&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#r</span> <span class="s">&#34;System.Web.Http.dll&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#r</span> <span class="s">&#34;System.Net.Http.dll&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#r</span> <span class="s">&#34;Newtonsoft.Json.dll&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#else</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#r</span> <span class="s">&#34;System.Net.Http&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#r</span> <span class="s">&#34;Newtonsoft.Json&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#endif</span>
+</span></span></code></pre></div><p>All credit goes to <a href="https://github.com/mikhailshilkov/"  class="external-link" target="_blank" rel="noopener">Mikhail Shilkov</a> for <a href="https://github.com/mikhailshilkov/azure-functions-fsharp-examples#4-function-created-with-cli"  class="external-link" target="_blank" rel="noopener">the above snippet of code</a>. While Microsoft alludes to the need (and reason) for this <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-fsharp#editor-prelude"  class="external-link" target="_blank" rel="noopener">&ldquo;editor prelude&rdquo;</a>, their suggested fix doesn&rsquo;t actually seem to resolve the problem. Mikhail&rsquo;s, on the other hand, does!</p>
+<p>Please note that since there were two options in <a href="../1-setup/#4-install-the-azure-functions-core-tools" >Step 1</a> for installing the Core Tools, you&rsquo;ll have to choose which assembly search path to use. Please also make sure that the path in my example actually exists on your machine. There&rsquo;s a chance it could vary, for several reasons. If you get stuck here, please leave a comment below.</p>
+<div class="notice note">
+  <div class="notice-title">
+    <i class="fa fa-sticky-note" aria-hidden="true"></i>Note
+  </div>
+  <div class="notice-content">This messy prelude is only required when writing Azure Functions with F# Script (.fsx files). It is possible to use precompiled F# instead (.fs files) and this kludge goes away. However, all things have a cost. To work with precompiled F# means you&rsquo;ll likely want to use FAKE and Paket too. Once your function app reaches a certain level of complexity, it might be a good idea. But until then, F# Script is still the fastest way to write a simple function.</div>
+</div>
+
+<h3 id="the-code">
+  The Code
+  <a class="heading-link" href="#the-code">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>With that out of the way, let&rsquo;s look at the rest of the code. What does it all do? Unsurprisingly, it&rsquo;s basically just a WebHook implementing Hello World.</p>
+<p>First we open up the namespaces we&rsquo;ll be needing:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fsharp" data-lang="fsharp"><span class="line"><span class="cl"><span class="k">open</span> <span class="nn">System.Net</span>
+</span></span><span class="line"><span class="cl"><span class="k">open</span> <span class="nn">System.Net.Http</span>
+</span></span><span class="line"><span class="cl"><span class="k">open</span> <span class="nn">Newtonsoft.Json</span>
+</span></span></code></pre></div><p>Then we create a couple record types for our model:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fsharp" data-lang="fsharp"><span class="line"><span class="cl"><span class="k">type</span> <span class="nc">Name</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">First</span><span class="o">:</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Last</span><span class="o">:</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">type</span> <span class="nc">Greeting</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Greeting</span><span class="o">:</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Then there&rsquo;s the actual <code>Run</code> function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fsharp" data-lang="fsharp"><span class="line"><span class="cl"><span class="k">let</span> <span class="nv">Run</span><span class="o">(</span><span class="n">req</span><span class="o">:</span> <span class="n">HttpRequestMessage</span><span class="o">,</span> <span class="n">log</span><span class="o">:</span> <span class="n">TraceWriter</span><span class="o">)</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="n">async</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="n">Info</span><span class="o">(</span><span class="s">&#34;Webhook was triggered!&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">let!</span> <span class="nv">jsonContent</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">Content</span><span class="o">.</span><span class="n">ReadAsStringAsync</span><span class="bp">()</span> <span class="o">|&gt;</span> <span class="nn">Async</span><span class="p">.</span><span class="n">AwaitTask</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">try</span>
+</span></span><span class="line"><span class="cl">            <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="nn">JsonConvert</span><span class="p">.</span><span class="n">DeserializeObject</span><span class="o">&lt;</span><span class="n">Name</span><span class="o">&gt;(</span><span class="n">jsonContent</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">req</span><span class="o">.</span><span class="n">CreateResponse</span><span class="o">(</span><span class="nn">HttpStatusCode</span><span class="p">.</span><span class="n">OK</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">{</span> <span class="n">Greeting</span> <span class="o">=</span> <span class="n">sprintf</span> <span class="s">&#34;Hello %s %s!&#34;</span> <span class="n">name</span><span class="o">.</span><span class="n">First</span> <span class="n">name</span><span class="o">.</span><span class="n">Last</span> <span class="o">})</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="o">_</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">req</span><span class="o">.</span><span class="n">CreateResponse</span><span class="o">(</span><span class="nn">HttpStatusCode</span><span class="p">.</span><span class="n">BadRequest</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="o">|&gt;</span> <span class="nn">Async</span><span class="p">.</span><span class="n">StartAsTask</span>
+</span></span></code></pre></div><p>It takes two parameters:</p>
+<ol>
+<li>The incoming <code>HttpRequestMessage</code>. This is what&rsquo;s known as a binding, and it is configured in the <code>function.json</code> file. We&rsquo;ll look at that soon.</li>
+<li>A logger that we can use to uh&hellip; log stuff. This is automatically injected for us by the runtime. No binding configuration required.</li>
+</ol>
+<p>The function body is wrapped in an <a href="https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/asynchronous-workflows"  class="external-link" target="_blank" rel="noopener">asynchronous workflow</a>, which you can sort of think of like a C# <code>async Task Method()</code>, but not quite. The F# mechanism that makes this work is called a <a href="https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/computation-expressions"  class="external-link" target="_blank" rel="noopener">computation expression</a>, which is essentially a monad. But let&rsquo;s not even go there. I think I&rsquo;ve said enough. Let&rsquo;s just leave it at: we can make async calls inside the <code>async { }</code> thing.</p>
+<p>Within the async workflow it:</p>
+<ul>
+<li>Uses our injected logger to write some information to the console</li>
+<li>Asynchronously reads the body of our http request into <code>jsonContent</code></li>
+<li>Uses Json.NET to deserialize <code>jsonContent</code> into a <code>Name</code> typed binding</li>
+<li>If all goes well it returns a <code>Task&lt;HttpResponseMessage&gt;</code> with status 200, and some JSON expressing our sincerest greetings to the calling client</li>
+<li>If the JSON deserialization goes horrible awry, then it returns a 400 BadRequest with absolutely no detail whatsoever. Because hackers.</li>
+<li>Finally, at the very end it&rsquo;s all piped into the <code>Async.StartAsTask</code> function to begin the async workflow</li>
+</ul>
+<p>I must say, it&rsquo;s not the most idiomatic F# code in the world, but it gets the job done.</p>
+<h2 id="function-bindings">
+  Function Bindings
+  <a class="heading-link" href="#function-bindings">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The input parameters and return values of an Azure Function are called <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings"  class="external-link" target="_blank" rel="noopener">bindings</a>. Each function may include multiple input bindings, and one output binding.</p>
+<p>Bindings are defined in the <code>functions.json</code> file. Ours looks like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;disabled&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;bindings&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;httpTrigger&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;direction&#34;</span><span class="p">:</span> <span class="s2">&#34;in&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;webHookType&#34;</span><span class="p">:</span> <span class="s2">&#34;genericJson&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;req&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;http&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;direction&#34;</span><span class="p">:</span> <span class="s2">&#34;out&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;res&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Here we can see that we have two bindings:</p>
+<ol>
+<li>An input binding of type <code>httpTrigger</code> named <code>req</code></li>
+<li>The output binding, which is simply our returned <code>HttpResponseMessage</code> type</li>
+</ol>
+<p>You will also notice that the logger isn&rsquo;t mentioned anywhere. And it doesn&rsquo;t need to be. It is automatically made available to us, and entirely optional to use.</p>
+<h2 id="whats-next">
+  What&rsquo;s Next
+  <a class="heading-link" href="#whats-next">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Hooray! We have a function app&hellip; <em>aaand</em> a function!</p>
+<p>Let&rsquo;s move on to <a href="../3-running-locally/" >Step 3</a>, and Run the Function Locally. We&rsquo;ll even toss a few test messages at it.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script>
+  window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "discardchanges" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    
+    document.addEventListener('themeChanged', function (e) { 
+        if (document.readyState == 'complete') {
+          DISQUS.reset({ reload: true, config: disqus_config });
+        }
+    });
+</script>
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Mike Sigsworth 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

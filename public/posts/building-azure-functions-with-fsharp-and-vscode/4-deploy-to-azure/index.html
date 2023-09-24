@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Building Azure Functions With F# Script and Visual Studio Code - Step 4 - Deploy the Function App to Azure · Discard Changes
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Mike Sigsworth">
+<meta name="description" content="This is Step 4 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App Run the Function Locally Deploy the Function App to Azure ◀️ Sign-In to Azure Link to heading First things first.">
+<meta name="keywords" content="blog,developer,personal,dotnet,kubernetes,terraform,powershell,octopus,github,actions,c#">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Building Azure Functions With F# Script and Visual Studio Code - Step 4 - Deploy the Function App to Azure"/>
+<meta name="twitter:description" content="This is Step 4 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App Run the Function Locally Deploy the Function App to Azure ◀️ Sign-In to Azure Link to heading First things first."/>
+
+<meta property="og:title" content="Building Azure Functions With F# Script and Visual Studio Code - Step 4 - Deploy the Function App to Azure" />
+<meta property="og:description" content="This is Step 4 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App Run the Function Locally Deploy the Function App to Azure ◀️ Sign-In to Azure Link to heading First things first." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/4-deploy-to-azure/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-04-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-04-12T00:00:00+00:00" />
+
+
+
+
+<link rel="canonical" href="https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/4-deploy-to-azure/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.135e22c97ff685fe983fc60048e309ced8f00d8d38f536aa67dba8a13a03dfa4.css" integrity="sha256-E14iyX/2hf6YP8YASOMJztjwDY049TaqZ9uooToD36Q=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/img/favicon-black-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/favicon-black-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Discard Changes
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/4-deploy-to-azure/">
+              Building Azure Functions With F# Script and Visual Studio Code - Step 4 - Deploy the Function App to Azure
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2018-04-12T00:00:00Z">
+                April 12, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/azure/">Azure</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/fsharp/">FSharp</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/azure-functions/">Azure Functions</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/visual-studio-code/">Visual Studio Code</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>This is Step 4 in a <a href="../" >series of posts</a> where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools.
+I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.</p>
+<ol>
+<li><a href="../1-setup/" >Setup Your Environment</a></li>
+<li><a href="../2-create-function-app/" >Create the Function App</a></li>
+<li><a href="../3-running-locally/" >Run the Function Locally</a></li>
+<li><strong><a href="../4-deploy-to-azure/" >Deploy the Function App to Azure</a></strong> ◀️</li>
+</ol>
+<h2 id="sign-in-to-azure">
+  Sign-In to Azure
+  <a class="heading-link" href="#sign-in-to-azure">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>First things first. You need an Azure account. If you don&rsquo;t have one, don&rsquo;t worry. The Azure Functions extension can help you create one. And it&rsquo;s free, plus you&rsquo;ll get $200 in free credits!</p>
+<p>In the Azure Functions panel, click on the option that fits your needs.</p>
+<p><img src="../img/azure-functions-sign-in.png" alt="Azure Functions Sign In"></p>
+<p>Once you are signed in you should see the name of your Azure subscription listed in the Azure Functions panel.</p>
+<h2 id="create-a-function-app-in-azure">
+  Create a Function App in Azure
+  <a class="heading-link" href="#create-a-function-app-in-azure">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>In the VS Code sidebar, hover over the Azure Functions panel again and click the <code>Deploy to Function App</code> button.</p>
+<p><img src="../img/vscode-deploy-to-function-app-button.png" alt="VS Code Deploy to Function App Button"></p>
+<p>VS Code will now prompt you for a <del>few bits</del> ton of info before deploying your function.</p>
+<ol>
+<li><strong>Select the folder to zip and deploy:</strong> Hit [Enter] to pick the current folder</li>
+<li><strong>Select a Subscription:</strong> Hit [Enter] to pick the current subscription</li>
+<li><strong>Select a Function App:</strong> Create New Function App</li>
+<li><strong>Enter a globally unique name:</strong> Here&rsquo;s where I can&rsquo;t exactly tell you what to write. You&rsquo;ll have to pick something unique. Personally, I like to prefix my unique Azure resource names with &ldquo;mikesigs-&rdquo;, so in this case I&rsquo;ll use <code>mikesigs-HelloYou</code>.</li>
+<li><strong>Select a resource group:</strong> Create new resource group</li>
+<li><strong>Enter the name of the new resource group:</strong> <code>HelloYou</code> <em>(This doesn&rsquo;t have to be globally unique)</em></li>
+<li><strong>Select a storage account:</strong> Create new storage account</li>
+<li><strong>Enter the name of the new storage account:</strong> This doesn&rsquo;t have to be globally unique, but it has to be lowercase. I&rsquo;m just gonna use <code>helloyou</code>. There&rsquo;s probably guidelines around naming these things somewhere. I should look it up&hellip;</li>
+<li><strong>Select a location:</strong> I live in Canada, so I am going to pick <code>Canada Central</code> but you do you</li>
+</ol>
+<p>And now we wait&hellip;</p>
+<p>It could take a couple minutes to provision all this stuff.</p>
+<p>🎵 <em>Jeopardy music playing</em> 🎵</p>
+<p>You&rsquo;ll see the progress of creating your resources in the Output panel. What we hope to eventually see in the end is:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;&gt;&gt;&gt;&gt;&gt; Deployment to <span class="s2">&#34;mikesigs-HelloYou&#34;</span> completed. <span class="o">&lt;&lt;&lt;&lt;&lt;&lt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WARNING: Some http trigger urls cannot be displayed in the output window because they
+</span></span><span class="line"><span class="cl">require an authentication token. Instead, you may copy them from the Azure Functions
+</span></span><span class="line"><span class="cl">explorer.
+</span></span></code></pre></div><p>Notice that warning though. We&rsquo;ll need a special URL to call our deployed function, one that includes a token parameter. The Azure Functions extension makes this super easy to get.</p>
+<p>You should now be able to drill down into your Azure subscription in the Azure Functions panel and find your newly created Function App. Expand the Functions node, right-click on <code>HelloYou</code>, and select <code>Copy Function Url</code>. This will put the URL you need on the clipboard.</p>
+<p><img src="../img/vscode-copy-function-url.png" alt="Copy Function Url"></p>
+<h2 id="test-your-deployed-function">
+  Test Your Deployed Function
+  <a class="heading-link" href="#test-your-deployed-function">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Head back over to Postman. Now, let&rsquo;s simply replace the localhost URL with the one on your clipboard and click Send. It might take a second or two, but you should soon get the same response that you received locally.</p>
+<h2 id="whats-next">
+  What&rsquo;s Next
+  <a class="heading-link" href="#whats-next">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>We made it! You now have an Azure Function app, deployed to Azure, that can say &ldquo;Hi&rdquo;.</p>
+<p>That&rsquo;s great and all, but you can do so much more!</p>
+<p>Take some time now to create a few other functions using different triggers.</p>
+<p>You can also try out some different bindings. Maybe try storing some data in Cosmos!</p>
+<p>There&rsquo;s so much more to learn. We&rsquo;ve just scratched the surface. Please stay tuned for more walkthroughs like this in the near future.</p>
+<p><em>Thanks for reading!</em></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script>
+  window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "discardchanges" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    
+    document.addEventListener('themeChanged', function (e) { 
+        if (document.readyState == 'complete') {
+          DISQUS.reset({ reload: true, config: disqus_config });
+        }
+    });
+</script>
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Mike Sigsworth 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

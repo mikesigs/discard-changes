@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Building Azure Functions With F# Script and Visual Studio Code - Step 1 - Setup Your Environment · Discard Changes
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Mike Sigsworth">
+<meta name="description" content="This is Step 1 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment ◀️ Create the Function App Run the Function Locally Deploy the Function App to Azure Setup Your Environment Link to heading There are several ways to develop Azure Functions.">
+<meta name="keywords" content="blog,developer,personal,dotnet,kubernetes,terraform,powershell,octopus,github,actions,c#">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Building Azure Functions With F# Script and Visual Studio Code - Step 1 - Setup Your Environment"/>
+<meta name="twitter:description" content="This is Step 1 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment ◀️ Create the Function App Run the Function Locally Deploy the Function App to Azure Setup Your Environment Link to heading There are several ways to develop Azure Functions."/>
+
+<meta property="og:title" content="Building Azure Functions With F# Script and Visual Studio Code - Step 1 - Setup Your Environment" />
+<meta property="og:description" content="This is Step 1 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment ◀️ Create the Function App Run the Function Locally Deploy the Function App to Azure Setup Your Environment Link to heading There are several ways to develop Azure Functions." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/1-setup/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-04-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-04-12T00:00:00+00:00" />
+
+
+
+
+<link rel="canonical" href="https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/1-setup/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.135e22c97ff685fe983fc60048e309ced8f00d8d38f536aa67dba8a13a03dfa4.css" integrity="sha256-E14iyX/2hf6YP8YASOMJztjwDY049TaqZ9uooToD36Q=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/img/favicon-black-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/favicon-black-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Discard Changes
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/1-setup/">
+              Building Azure Functions With F# Script and Visual Studio Code - Step 1 - Setup Your Environment
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2018-04-12T00:00:00Z">
+                April 12, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/azure/">Azure</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/fsharp/">FSharp</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/azure-functions/">Azure Functions</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/visual-studio-code/">Visual Studio Code</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>This is Step 1 in a <a href="../" >series of posts</a> where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools.
+I&rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.</p>
+<ol>
+<li><strong><a href="../1-setup/" >Setup Your Environment</a></strong> ◀️</li>
+<li><a href="../2-create-function-app/" >Create the Function App</a></li>
+<li><a href="../3-running-locally/" >Run the Function Locally</a></li>
+<li><a href="../4-deploy-to-azure/" >Deploy the Function App to Azure</a></li>
+</ol>
+<h2 id="setup-your-environment">
+  Setup Your Environment
+  <a class="heading-link" href="#setup-your-environment">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>There are several ways to develop Azure Functions. You can choose to do everything in the Azure Portal, you can use the full blown Visual Studio, or you can use Visual Studio Code and the CLI. We&rsquo;ll be going the latter route.</p>
+<p>Let&rsquo;s get your machine properly setup! You will need the following:</p>
+<h3 id="1-install-visual-studio-code">
+  1) Install Visual Studio Code
+  <a class="heading-link" href="#1-install-visual-studio-code">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>This seems like a no-brainer. But if you don&rsquo;t already have it, install <a href="https://code.visualstudio.com/"  class="external-link" target="_blank" rel="noopener">Visual Studio Code</a>.</p>
+<h3 id="2-install-f">
+  2) Install F#
+  <a class="heading-link" href="#2-install-f">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>If you have Visual Studio installed, perhaps you&rsquo;ve already included support for F#. If that&rsquo;s the case, you can skip this step. If not, then head over to <a href="http://fsharp.org/"  class="external-link" target="_blank" rel="noopener">fsharp.org</a> and download the appropriate version for your system.</p>
+<h3 id="3-install-the-ionide-plugins-for-visual-studio-code">
+  3) Install the Ionide Plugins for Visual Studio Code
+  <a class="heading-link" href="#3-install-the-ionide-plugins-for-visual-studio-code">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>If you&rsquo;ve done any F# development in VS Code, then you almost certainly have these installed. If not, you&rsquo;ll soon come to learn that <strong>Ionide is awesome!</strong></p>
+<p>Use the Visual Studio Code Extensions Marketplace to install them. Just click the Extensions button in the sidebar and search for <em>&ldquo;Ionide&rdquo;</em>.</p>
+<h4 id="ionide-fsharphttpsgithubcomionideionide-vscode-fsharp">
+  <a href="https://github.com/ionide/ionide-vscode-fsharp"  class="external-link" target="_blank" rel="noopener">Ionide-fsharp</a>
+  <a class="heading-link" href="#ionide-fsharphttpsgithubcomionideionide-vscode-fsharp">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>For F# intellisense, document formatting, syntax and error highlighting, and more. It also provides project scaffolding using a tool called <a href="http://fsharp-editing.github.io/Forge/"  class="external-link" target="_blank" rel="noopener">Forge</a>.</p>
+<h4 id="ionide-paketionide-pakethttpsgithubcomionideionide-vscode-paket">
+  [Ionide-Paket](<a href="https://github.com/ionide/ionide-vscode-paket"  class="external-link" target="_blank" rel="noopener">Ionide Paket</a>)
+  <a class="heading-link" href="#ionide-paketionide-pakethttpsgithubcomionideionide-vscode-paket">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p><a href="http://fsprojects.github.io/Paket/"  class="external-link" target="_blank" rel="noopener">Paket</a> integration, for better package management</p>
+<h4 id="ionide-fakehttpsgithubcomionideionide-vscode-fake">
+  <a href="https://github.com/ionide/ionide-vscode-fake"  class="external-link" target="_blank" rel="noopener">Ionide-FAKE</a>
+  <a class="heading-link" href="#ionide-fakehttpsgithubcomionideionide-vscode-fake">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p><a href="http://fsharp.github.io/FAKE/"  class="external-link" target="_blank" rel="noopener">FAKE</a> integration. FAKE is an amazing build tool for .NET projects.</p>
+<h3 id="4-install-the-azure-functions-core-tools">
+  4) Install the Azure Functions Core Tools
+  <a class="heading-link" href="#4-install-the-azure-functions-core-tools">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>The <a href="https://github.com/Azure/azure-functions-core-tools"  class="external-link" target="_blank" rel="noopener">Azure Functions Core Tools</a> let you run your functions locally. It is the exact same runtime used in Azure to host your functions. Pretty cool!</p>
+<p>We&rsquo;re going to be using v1.0 of the Core Tools in this series. The beta 2.0 version doesn&rsquo;t support F# script yet. It does support pre-compiled F# however. But that is the subject of a future blog post.</p>
+<p>One significant caveat to using v1.0 is it only runs on Windows. Sorry about that Mac/Linux users 😞</p>
+<p>To install the Core Tools you have two options, <a href="https://www.npmjs.com/get-npm"  class="external-link" target="_blank" rel="noopener">npm</a> or <a href="https://chocolatey.org/"  class="external-link" target="_blank" rel="noopener">Chocolatey</a>.</p>
+<h4 id="option-1-npm">
+  Option 1: NPM
+  <a class="heading-link" href="#option-1-npm">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>npm is distributed with Node.js, so if you don&rsquo;t have Node installed that should be step one. Alternatively, you could use Chocolatey (see below).</p>
+<div class="notice note">
+  <div class="notice-title">
+    <i class="fa fa-sticky-note" aria-hidden="true"></i>Note
+  </div>
+  <div class="notice-content"><p>I highly recommend you don&rsquo;t install Node directly. You should use <a href="https://github.com/coreybutler/nvm-windows"  class="external-link" target="_blank" rel="noopener">nvm-windows</a>,
+which allows multiple versions of Node to be installed simultaneously. Check the <a href="https://github.com/coreybutler/nvm-windows"  class="external-link" target="_blank" rel="noopener">GitHub</a> page for installation instructions.</p>
+<p>It&rsquo;s not essential to use nvm-windows for this tutorial, but in my experience, it is often nice to be able to be able to switch between different node versions as the need arises.</p></div>
+</div>
+
+<p>Once you have Node installed, and thus npm, you can install the Core Tools with the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm i -g azure-functions-core-tools
+</span></span></code></pre></div><h4 id="option-2-chocolatey">
+  Option 2: Chocolatey
+  <a class="heading-link" href="#option-2-chocolatey">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Chocolatey is a package manager for Windows. It allows you to install <em>nearly</em> anything from the command line. If you&rsquo;ve never checked it out before then now would definitely be a good time.
+Head over to <a href="https://chocolatey.org/install"  class="external-link" target="_blank" rel="noopener">the Chocolatey website</a> for installation instructions.</p>
+<div class="notice note">
+  <div class="notice-title">
+    <i class="fa fa-sticky-note" aria-hidden="true"></i>Note
+  </div>
+  <div class="notice-content"><p>To give you some idea of how Chocolatey could improve your computering experience. When I have to do a fresh install on a new machine (which I&rsquo;ve had to do 4 times this year. Long story&hellip;)
+I can install 90% of the things I need with a single command. I won&rsquo;t list everything I have installed, but as an example:</p>
+<p><code>choco install 7zip azure-cli cmder diffmerge git gitkraken hub hugo linqpad lockhunter ngrok notepadplusplus ...</code></p>
+<p>Chocolatey then downloads and silently installs each of those programs.</p></div>
+</div>
+
+<p>Once you have Chocolatey installed, you can get the Core Tools with the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">choco install azure-functions-core-tools
+</span></span></code></pre></div><h3 id="5-install-the-azure-functions-extension">
+  5) Install the Azure Functions Extension
+  <a class="heading-link" href="#5-install-the-azure-functions-extension">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Another extremely useful Visual Studio Code extension is the <a href="https://github.com/Microsoft/vscode-azurefunctions"  class="external-link" target="_blank" rel="noopener">Azure Functions</a> extension. Search for and install it in the Extensions sidebar.</p>
+<p>This extension will make working with Azure Functions in Visual Studio Code a breeze. It leverages the Azure Functions Core Tools to power a lot of its functionality, along with providing some additional customization to your VS Code workspace.
+Unfortunately, <a href="https://github.com/Microsoft/vscode-azurefunctions/issues/315"  class="external-link" target="_blank" rel="noopener">we cannot create an F# project with it yet</a>. But it will still recognize an existing F# Azure Functions project the first time you open it.</p>
+<h2 id="whats-next">
+  What&rsquo;s Next
+  <a class="heading-link" href="#whats-next">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>That&rsquo;s pretty much it. You&rsquo;re all setup!</p>
+<p>Now that you&rsquo;ve got all the tools you need. Let&rsquo;s move on to <a href="../2-create-function-app/" >Step 2</a> and Create The Function App!</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script>
+  window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "discardchanges" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    
+    document.addEventListener('themeChanged', function (e) { 
+        if (document.readyState == 'complete') {
+          DISQUS.reset({ reload: true, config: disqus_config });
+        }
+    });
+</script>
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Mike Sigsworth 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

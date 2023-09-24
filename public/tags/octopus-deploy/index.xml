@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Octopus Deploy on Discard Changes</title>
+    <link>https://discardchanges.com/tags/octopus-deploy/</link>
+    <description>Recent content in Octopus Deploy on Discard Changes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 26 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://discardchanges.com/tags/octopus-deploy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Have Your Cake and Build It Too</title>
+      <link>https://discardchanges.com/posts/have-your-cake-and-build-it-too/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/have-your-cake-and-build-it-too/</guid>
+      <description>In this post I will walk you through the basics of using Cake, a cross-platform build automation system with a C# DSL.
+We will create a couple .NET Core projects, then create a Cake file to build, test, and package the app for deployment using Octopus Deploy tools.
+Create Project Directory Link to heading Let&amp;rsquo;s start at the beginning and create a new home for our code. I&amp;rsquo;m going to put mine under c:\code, but you do you.</description>
+    </item>
+    
+  </channel>
+</rss>

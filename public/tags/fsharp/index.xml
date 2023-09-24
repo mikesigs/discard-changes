@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FSharp on Discard Changes</title>
+    <link>https://discardchanges.com/tags/fsharp/</link>
+    <description>Recent content in FSharp on Discard Changes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 29 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://discardchanges.com/tags/fsharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Azure Functions With Precompiled F#</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-precompiled-fsharp/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-precompiled-fsharp/</guid>
+      <description>Previously we looked at Building Azure Functions with F# Script, which is still the only supported way of creating an Azure Function with F#, and a decent option for simple functions. So, if you need to play it safe (and stable) then that&amp;rsquo;s your best bet. However, in this post we are going to take a trip to the edge. We&amp;rsquo;ll be using .NET Core, Azure Functions Core Tools v2, and F#.</description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With F# Script and Visual Studio Code</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/</guid>
+      <description>In this series of posts I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&amp;rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App Run the Function Locally Deploy the Function App to Azure </description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With F# Script and Visual Studio Code - Step 1 - Setup Your Environment</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/1-setup/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/1-setup/</guid>
+      <description>This is Step 1 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&amp;rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment ◀️ Create the Function App Run the Function Locally Deploy the Function App to Azure Setup Your Environment Link to heading There are several ways to develop Azure Functions.</description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With F# Script and Visual Studio Code - Step 2 - Create the Function App</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/2-create-function-app/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/2-create-function-app/</guid>
+      <description>This is Step 2 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&amp;rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App ◀️ Run the Function Locally Deploy the Function App to Azure Create the Function App Link to heading Alright, you&amp;rsquo;ve got all the tools you need to do some kickass F# development.</description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With F# Script and Visual Studio Code - Step 3 - Run the Function Locally</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/3-running-locally/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/3-running-locally/</guid>
+      <description>This is Step 3 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&amp;rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App Run the Function Locally ◀️ Deploy the Function App to Azure Run the Function Locally Link to heading So you&amp;rsquo;ve got your function created and you want to test it out.</description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With F# Script and Visual Studio Code - Step 4 - Deploy the Function App to Azure</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/4-deploy-to-azure/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/4-deploy-to-azure/</guid>
+      <description>This is Step 4 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&amp;rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App Run the Function Locally Deploy the Function App to Azure ◀️ Sign-In to Azure Link to heading First things first.</description>
+    </item>
+    
+  </channel>
+</rss>

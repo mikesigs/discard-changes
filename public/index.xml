@@ -1,3 +1,91 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Discard Changes</title><link>https://discardchanges.com/</link><description>Recent content on Discard Changes</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://discardchanges.com/index.xml" rel="self" type="application/rss+xml"/><item><title>About Me</title><link>https://discardchanges.com/about/</link><pubDate>Thu, 21 Sep 2023 06:06:03 +0000</pubDate><guid>https://discardchanges.com/about/</guid><description>I am a .NET Developer based in Calgary, Canada. I have been a professional software developer since 2003. For the last 7 years, I have been working extensively with AWS and Kubernetes, building microservice-based applications with C#, NServiceBus, Terraform, and a host of other fun tech. I am passionate about learning and exploring new technologies, and I enjoy sharing my knowledge with others. In my free time, I love to ski and play board games with my friends and family.</description></item><item><title>Creating a Terraform Version Manager with PowerShell</title><link>https://discardchanges.com/posts/terraform-version-manager/</link><pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate><guid>https://discardchanges.com/posts/terraform-version-manager/</guid><description>If you&amp;rsquo;re a developer who works with Terraform, you know how important it is to have the right version of Terraform installed for your project. But what if you need to work on multiple projects, each with a different version of Terraform? That&amp;rsquo;s where a Terraform version manager comes in.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Discard Changes</title>
+    <link>https://discardchanges.com/</link>
+    <description>Recent content on Discard Changes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://discardchanges.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Me</title>
+      <link>https://discardchanges.com/about/</link>
+      <pubDate>Thu, 21 Sep 2023 06:06:03 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/about/</guid>
+      <description>I am a .NET Developer based in Calgary, Canada. I have been a professional software developer since 2003. For the last 7 years, I have been working extensively with AWS and Kubernetes, building microservice-based applications with C#, NServiceBus, Terraform, and a host of other fun tech. I am passionate about learning and exploring new technologies, and I enjoy sharing my knowledge with others. In my free time, I love to ski and play board games with my friends and family.</description>
+    </item>
+    
+    <item>
+      <title>Creating a Terraform Version Manager with PowerShell</title>
+      <link>https://discardchanges.com/posts/terraform-version-manager/</link>
+      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/terraform-version-manager/</guid>
+      <description>If you&amp;rsquo;re a developer who works with Terraform, you know how important it is to have the right version of Terraform installed for your project. But what if you need to work on multiple projects, each with a different version of Terraform? That&amp;rsquo;s where a Terraform version manager comes in.
 There are a couple Terraform version managers available for Linux and Mac, including:
-tfenv tfswitch These tools allow you to easily switch between different versions of Terraform on your local machine.</description></item></channel></rss>
+tfenv tfswitch These tools allow you to easily switch between different versions of Terraform on your local machine.</description>
+    </item>
+    
+    <item>
+      <title>Have Your Cake and Build It Too</title>
+      <link>https://discardchanges.com/posts/have-your-cake-and-build-it-too/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/have-your-cake-and-build-it-too/</guid>
+      <description>In this post I will walk you through the basics of using Cake, a cross-platform build automation system with a C# DSL.
+We will create a couple .NET Core projects, then create a Cake file to build, test, and package the app for deployment using Octopus Deploy tools.
+Create Project Directory Link to heading Let&amp;rsquo;s start at the beginning and create a new home for our code. I&amp;rsquo;m going to put mine under c:\code, but you do you.</description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With Precompiled F#</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-precompiled-fsharp/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-precompiled-fsharp/</guid>
+      <description>Previously we looked at Building Azure Functions with F# Script, which is still the only supported way of creating an Azure Function with F#, and a decent option for simple functions. So, if you need to play it safe (and stable) then that&amp;rsquo;s your best bet. However, in this post we are going to take a trip to the edge. We&amp;rsquo;ll be using .NET Core, Azure Functions Core Tools v2, and F#.</description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With F# Script and Visual Studio Code - Step 1 - Setup Your Environment</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/1-setup/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/1-setup/</guid>
+      <description>This is Step 1 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&amp;rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment ◀️ Create the Function App Run the Function Locally Deploy the Function App to Azure Setup Your Environment Link to heading There are several ways to develop Azure Functions.</description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With F# Script and Visual Studio Code - Step 2 - Create the Function App</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/2-create-function-app/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/2-create-function-app/</guid>
+      <description>This is Step 2 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&amp;rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App ◀️ Run the Function Locally Deploy the Function App to Azure Create the Function App Link to heading Alright, you&amp;rsquo;ve got all the tools you need to do some kickass F# development.</description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With F# Script and Visual Studio Code - Step 3 - Run the Function Locally</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/3-running-locally/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/3-running-locally/</guid>
+      <description>This is Step 3 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&amp;rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App Run the Function Locally ◀️ Deploy the Function App to Azure Run the Function Locally Link to heading So you&amp;rsquo;ve got your function created and you want to test it out.</description>
+    </item>
+    
+    <item>
+      <title>Building Azure Functions With F# Script and Visual Studio Code - Step 4 - Deploy the Function App to Azure</title>
+      <link>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/4-deploy-to-azure/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://discardchanges.com/posts/building-azure-functions-with-fsharp-and-vscode/4-deploy-to-azure/</guid>
+      <description>This is Step 4 in a series of posts where I will walk you through the steps required to create a simple Azure Function using F# Script, VS Code, and v1 of the Azure Functions Core Tools. I&amp;rsquo;ll cover everything from what you need to install, all the way through creating the function, and deploying it to your Azure account.
+Setup Your Environment Create the Function App Run the Function Locally Deploy the Function App to Azure ◀️ Sign-In to Azure Link to heading First things first.</description>
+    </item>
+    
+  </channel>
+</rss>
