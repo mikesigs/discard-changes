@@ -169,7 +169,7 @@ function Show-TerraformVersions {
     }
     else {
         $Response = Invoke-WebRequest -Uri "https://releases.hashicorp.com/terraform"
-        $TerraformVersions = [Regex]::Matches($Response.Content, '<a href=".+">terraform_(.+)</a>') | Select-Object { $_.Groups[1].Value }
+        $TerraformVersions = [Regex]::Matches($Response.Content, '<a href=".+">terraform_(.+)</a>') | ForEach-Object { $_.Groups[1].Value }
     }
 
     $ActiveVersion = Get-ActiveTerraformVersion
